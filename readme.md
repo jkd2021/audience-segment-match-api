@@ -63,3 +63,23 @@ source list, along with a similarity score indicating the confidence of matching
 First, clone this repository from GitHub:
 > git clone https://github.com/jkd2021/audience-segment-match-api.git \
 cd audience-segment-match-api
+
+
+### 2. Build & Run containerized API
+
+> docker build -t audience_segment_match_api . \
+docker run -d -p 5000:5000 audience_segment_match_api
+
+
+### 3. Test
+
+After running the containerized API, please wait for **30 seconds** as it will first download the pretrained GloVe model.
+
+Then give the test case to API:
+> curl -X POST http://127.0.0.1:5000/match -H "Content-Type: application/json" -d @test_audiences.json
+
+You can get output like this:
+> {"best_matches":\
+> [{"best_match":"Computer geeks who love new electrical devices","input_segment":"People interested in gaming and technology","similarity_score":0.8673200607299805},\
+> {"best_match":"Students looking for flexible work opportunities","input_segment":"Young professionals seeking full-time jobs","similarity_score":0.7868497371673584},\
+> {"best_match":"Retirees who want to explore the world","input_segment":"Seniors interested in traveling","similarity_score":0.8931201696395874}]}
