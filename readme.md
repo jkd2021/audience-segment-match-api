@@ -9,6 +9,7 @@ source list, along with a similarity score indicating the confidence of matching
 - working-dir/
   - api.py # API code
   - test_api.py # unit tests for API
+  - config.json # configurations of API
   - requirements.txt # API dependencies
   - Dockerfile # Docker build file
   - test_audiences.json # test segments
@@ -35,6 +36,7 @@ source list, along with a similarity score indicating the confidence of matching
 - all words are assumed to be included in the model's vocabulary
 - use the mean value of all word vectors in a segment to represent the segment in high-dimension space
 - use cosine similarity to calculate matching confidences among segments
+- use a threshold of 0.75 to identify unmatched cases
 
 ## Issues
 

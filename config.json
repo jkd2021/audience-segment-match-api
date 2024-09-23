@@ -1,0 +1,4 @@
+{
+    "match_threshold": 0.8,
+    "nlp_model_name": "glove-wiki-gigaword-50"
+}

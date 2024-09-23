@@ -13,6 +13,9 @@ class TestAPI(unittest.TestCase):
         self.app.testing = True
         with open('./test_audiences.json', 'r') as f:
             self.test_data = json.load(f)
+        with open('./config.json') as f:
+            config = json.load(f)
+            self.match_threshold = config['match_threshold']
 
     def test_valid_data(self):
         """ Valid input test """
@@ -21,6 +24,7 @@ class TestAPI(unittest.TestCase):
                                  content_type='application/json'
                                  )
         data = json.loads(response.data)
+        self.assertGreaterEqual(data, self.match_threshold)  # should return 400 for empty input
         print(data)
 
     def test_empty_data(self):

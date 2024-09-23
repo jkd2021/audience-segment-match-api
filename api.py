@@ -1,16 +1,19 @@
 import pandas as pd
 import numpy as np
+import json
 import gensim.downloader as model_api
 from flask import Flask, request, jsonify
 from sklearn.metrics.pairwise import cosine_similarity
 
 app = Flask(__name__)
 
+with open('./config.json') as f:
+    config = json.load(f)
+    match_threshold = config['match_threshold']
+    nlp_model_name = config['nlp_model_name']
+
 # extract segment data from source_segments.csv
 source_segments = pd.read_csv("./source_segments.csv")["descriptions"].tolist()
-
-# configurations of the NLP model
-nlp_model_name = "glove-wiki-gigaword-50"
 
 # automatically download & load pretrained NLP model for word embedding
 word_embed_model = model_api.load(nlp_model_name)
@@ -85,6 +88,12 @@ def match_audience_segments():
             "best_match": source_segments[best_index],
             "similarity_score": float(scores[best_index])
         }
+
+        # set threshold to check matches
+        if scores[best_index] < match_threshold:
+            # omit the match with low match score
+            best_match["similarity_score"] = "0.0"
+            best_match["best_match"] = "no match found"
 
         best_matches.append(best_match)
 
