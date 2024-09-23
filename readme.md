@@ -47,13 +47,23 @@ source list, along with a similarity score indicating the confidence of matching
 
 ## Prerequisites
 
-### Libraries:
+### 1. Tools:
+
+- **docker**: for API containerization
+- **git**: for version control
+
+### 2. Libraries:
 
 - **flask**: as the framework for this light API
 - **pandas**: data extraction from csv
 - **numpy**: similarity calculation
 - **gensim**: accessing word vectorizing model
 - **scikit-learn**: similarity calculation among the segments
+
+### 3. Pretrained weights:
+
+- **GloVe** : [glove-wiki-gigaword-50](https://github.com/piskvorky/gensim-data?tab=readme-ov-file#models) 
+(will be automatically downloaded when start running the container)
 
 
 ## Instructions of API
