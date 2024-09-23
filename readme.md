@@ -18,9 +18,23 @@ source list, along with a similarity score indicating the confidence of matching
 
 ## Assumptions
 
+### 1. Files
+
+- test_audiences.json & source_segments.csv already in the working directory
+
+### 2. Toolkits
+
+- python 3.9 is used
+- use Flask to build API
 
 
 ## Prerequisites
+
+### Libraries:
+
+- **flask**: as the framework for this light API
+- **pandas**: data extraction from csv
+- **numpy**: similarity calculation
 
 
 
