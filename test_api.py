@@ -24,7 +24,7 @@ class TestAPI(unittest.TestCase):
                                  content_type='application/json'
                                  )
         data = json.loads(response.data)
-        self.assertGreaterEqual(data, self.match_threshold)  # should return 400 for empty input
+        self.assertGreaterEqual(data, self.match_threshold)  # check if all best matches with score over the threshold
         print(data)
 
     def test_empty_data(self):
