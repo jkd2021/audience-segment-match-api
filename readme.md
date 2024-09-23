@@ -20,12 +20,21 @@ source list, along with a similarity score indicating the confidence of matching
 
 ### 1. Files
 
-- test_audiences.json & source_segments.csv already in the working directory
+- test_audiences.json & source_segments.csv already in the working directory (the contents are pure english words, no preprocessing required)
 
 ### 2. Toolkits
 
 - python 3.9 is used
 - use Flask to build API
+- the GloVe model from gensim
+- use scikit-learn cosine similarity calculation
+
+### 2. Used methods
+
+- use a word vectorizing model, here a pretrained GloVe model (65MB, light-weighted compared to Word2Vec or BERT), to embed words to vectors in a segment
+- all words are assumed to be included in the model's vocabulary
+- use the mean value of all word vectors in a segment to represent the segment in high-dimension space
+- use cosine similarity to calculate matching confidences among segments
 
 
 ## Prerequisites
@@ -35,7 +44,8 @@ source list, along with a similarity score indicating the confidence of matching
 - **flask**: as the framework for this light API
 - **pandas**: data extraction from csv
 - **numpy**: similarity calculation
-
+- **gensim**: accessing word vectorizing model
+- **scikit-learn**: similarity calculation among the segments
 
 
 ## Instructions of API
