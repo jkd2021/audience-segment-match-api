@@ -24,9 +24,9 @@ source list, along with a similarity score indicating the confidence of matching
 
 ### 2. Toolkits
 
-- python 3.9 is used
+- use python 3.9
 - use Flask to build API
-- the GloVe model from gensim
+- use GloVe model from gensim
 - use scikit-learn cosine similarity calculation
 
 ### 2. Used methods
@@ -36,6 +36,12 @@ source list, along with a similarity score indicating the confidence of matching
 - use the mean value of all word vectors in a segment to represent the segment in high-dimension space
 - use cosine similarity to calculate matching confidences among segments
 
+## Issues
+
+- GloVe model is only doing word embedding, not understanding the entire segment
+> (Example: a segment of  "Professional E-sports player" got best match to "Gym-lover who participate in sports and fitness events")\
+> (Example: a segment of  "Professional computer game player" got best match to "Computer geeks who love new electrical devices")
+- (**TODO**) LLM model can be used to understand and embed segments better
 
 ## Prerequisites
 
